@@ -11,7 +11,6 @@ const { track } = props;
 </script>
 <template>
     <div
-        key="track.id"
         class="mb-2 cursor-pointer rounded border p-4 text-white hover:bg-gray-800"
     >
         {{ track.name }}

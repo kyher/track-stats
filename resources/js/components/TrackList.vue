@@ -9,6 +9,6 @@ const { tracks } = props;
 </script>
 <template>
     <div class="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-        <Track v-for="track in tracks" :track="track" />
+        <Track v-for="track in tracks" :track="track" :key="track.id" />
     </div>
 </template>
