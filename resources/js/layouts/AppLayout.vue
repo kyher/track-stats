@@ -7,7 +7,6 @@ import Nav from '@/components/Nav.vue';
     >
         <Nav />
         <main class="text-white">
-            <h1 class="text-3xl font-bold">TrackStats</h1>
             <slot />
         </main>
     </div>

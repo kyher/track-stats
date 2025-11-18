@@ -36,4 +36,11 @@ export interface User {
     updated_at: string;
 }
 
+export interface TrackType {
+    id: number;
+    name: string;
+    created_at: string;
+    updated_at: string;
+}
+
 export type BreadcrumbItemType = BreadcrumbItem;

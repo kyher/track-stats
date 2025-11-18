@@ -1,18 +1,14 @@
 <script setup lang="ts">
+import { TrackType } from '@/types';
 import { defineProps } from 'vue';
-interface Track {
-    id: number;
-    name: string;
-}
+import Track from './Track.vue';
 const props = defineProps<{
-    tracks: Track[];
+    tracks: TrackType[];
 }>();
 const { tracks } = props;
 </script>
 <template>
-    <ul>
-        <li v-for="track in tracks" :key="track.id">
-            {{ track.name }}
-        </li>
-    </ul>
+    <div class="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <Track v-for="track in tracks" :track="track" />
+    </div>
 </template>
