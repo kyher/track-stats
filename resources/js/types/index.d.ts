@@ -39,6 +39,15 @@ export interface User {
 export interface TrackType {
     id: number;
     name: string;
+    voteCount: number;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface VoteType {
+    id: number;
+    user_id: number;
+    track_id: number;
     created_at: string;
     updated_at: string;
 }

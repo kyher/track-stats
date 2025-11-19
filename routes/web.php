@@ -15,6 +15,7 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard', [
         'tracks' => Track::all(),
+        'userVote' => auth()->user()->vote ?? null,
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
