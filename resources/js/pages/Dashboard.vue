@@ -19,6 +19,6 @@ withDefaults(
     <Head title="Home" />
 
     <AppLayout>
-        <TrackList :tracks="tracks" :userVote="userVote" />
+        <TrackList :tracks="tracks" :userVote="userVote" :readOnly="false" />
     </AppLayout>
 </template>

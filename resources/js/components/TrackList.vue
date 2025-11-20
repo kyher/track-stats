@@ -5,6 +5,7 @@ import Track from './Track.vue';
 const props = defineProps<{
     tracks: TrackType[];
     userVote?: VoteType;
+    readOnly: boolean;
 }>();
 const { tracks } = props;
 </script>
@@ -15,6 +16,7 @@ const { tracks } = props;
             :track="track"
             :key="track.id"
             :currentUserVote="userVote?.track_id === track.id"
+            :readOnly="readOnly"
         />
     </div>
 </template>

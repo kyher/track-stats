@@ -21,6 +21,6 @@ withDefaults(
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     </Head>
     <AppLayout>
-        <TrackList :tracks="tracks" />
+        <TrackList :tracks="tracks" :readOnly="true" />
     </AppLayout>
 </template>
