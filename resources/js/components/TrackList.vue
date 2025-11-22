@@ -12,14 +12,16 @@ const props = defineProps<{
 const { tracks } = props;
 </script>
 <template>
-    <HighlightedTrack
-        v-if="highestVotedTracks && highestVotedTracks.length > 0"
-        v-for="highestVotedTrack in highestVotedTracks"
-        :key="highestVotedTrack.id"
-        :track="highestVotedTrack"
-        :currentUserVote="userVote?.track_id === highestVotedTrack.id"
-        :readOnly="true"
-    />
+    <div v-if="highestVotedTracks && highestVotedTracks.length > 0">
+        <HighlightedTrack
+            v-for="highestVotedTrack in highestVotedTracks"
+            :key="highestVotedTrack.id"
+            :track="highestVotedTrack"
+            :currentUserVote="userVote?.track_id === highestVotedTrack.id"
+            :readOnly="true"
+        />
+    </div>
+
     <div class="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         <Track
             v-for="track in tracks"

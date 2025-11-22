@@ -9,7 +9,7 @@ use App\Http\Controllers\VoteController;
 Route::get('/', function () {
     $tracks = Track::all();
     $highestVotedTrack = $tracks->sortByDesc(fn($track) => $track->votes->count())->first();
-    $restOfTracks = $tracks->where('id', '!=', $highestVotedTrack->id)
+    $restOfTracks = $tracks->where('id', '!=', $highestVotedTrack?->id)
         ->sortByDesc(fn($track) => $track->votes->count())->values();
 
     $otherTracksWithTheSameVoteCount = $restOfTracks->filter(fn($track) => $track->votes->count() === $highestVotedTrack->votes->count());
