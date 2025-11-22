@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Form } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
+import Button from './ui/button/Button.vue';
 interface Track {
     id: number;
     name: string;
@@ -17,19 +18,15 @@ const { track } = props;
     <Form
         method="post"
         action="/vote"
-        class="mb-2 rounded border p-4 text-white hover:bg-gray-800"
-        :class="{ 'bg-gray-700': currentUserVote }"
+        class="mb-2 rounded border p-4 text-white"
+        :class="{ 'bg-green-900': currentUserVote }"
     >
         <input type="hidden" name="track_id" :value="track.id" />
         <p>{{ track.name }}</p>
-        <p v-if="readOnly">Votes: {{ track.voteCount }}</p>
+        <p v-if="readOnly" class="font-bold">{{ track.voteCount }} votes</p>
         <span v-if="currentUserVote">✅</span>
-        <button
-            v-else-if="!readOnly"
-            type="submit"
-            class="my-4 cursor-pointer rounded bg-blue-700 p-2 hover:bg-blue-800"
-        >
+        <Button v-else-if="!readOnly" type="submit" class="mt-4 cursor-pointer">
             Vote
-        </button>
+        </Button>
     </Form>
 </template>

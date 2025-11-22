@@ -8,6 +8,7 @@ withDefaults(
     defineProps<{
         canRegister: boolean;
         tracks: TrackType[];
+        highestVotedTracks?: TrackType[];
     }>(),
     {
         canRegister: true,
@@ -21,6 +22,10 @@ withDefaults(
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     </Head>
     <AppLayout>
-        <TrackList :tracks="tracks" :readOnly="true" />
+        <TrackList
+            :tracks="tracks"
+            :readOnly="true"
+            :highestVotedTracks="highestVotedTracks"
+        />
     </AppLayout>
 </template>
