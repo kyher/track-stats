@@ -3,40 +3,18 @@ import { dashboard, login, logout, register } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 </script>
 <template>
-    <nav class="flex w-full items-center gap-4">
-        <Link
-            href="/"
-            class="inline-block rounded-sm px-5 py-1.5 text-lg leading-normal font-bold text-[#1b1b18] hover:scale-105 dark:text-[#EDEDEC]"
-        >
-            TrackStats</Link
-        >
-        <div class="ml-auto flex items-center gap-4">
-            <Link
-                v-if="$page.props.auth.user"
-                :href="dashboard()"
-                class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-            >
+    <nav class="flex items-center justify-between gap-6 px-4 py-6">
+        <Link href="/" class="text-4xl font-bold"> TrackStats </Link>
+        <div class="flex items-center gap-3">
+            <Link v-if="$page.props.auth.user" :href="dashboard()" class="">
                 Dashboard
             </Link>
-            <Link
-                v-if="$page.props.auth.user"
-                :href="logout()"
-                class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+            <Link v-if="$page.props.auth.user" :href="logout()" class=""
                 >Log out
             </Link>
             <template v-else>
-                <Link
-                    :href="login()"
-                    class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                >
-                    Log in
-                </Link>
-                <Link
-                    :href="register()"
-                    class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                >
-                    Register
-                </Link>
+                <Link :href="login()" class=""> Log in </Link>
+                <Link :href="register()" class=""> Register </Link>
             </template>
         </div>
     </nav>

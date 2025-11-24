@@ -18,8 +18,11 @@ const { track } = props;
     <Form
         method="post"
         action="/vote"
-        class="mb-2 rounded border p-4 shadow-xl transition-shadow duration-300 hover:shadow-2xl"
-        :class="{ 'bg-green-900': currentUserVote }"
+        class="mb-2 rounded bg-gray-800 p-4 transition-colors"
+        :class="{
+            'bg-green-900': currentUserVote,
+            'hover:bg-gray-700': !currentUserVote,
+        }"
     >
         <input type="hidden" name="track_id" :value="track.id" />
         <p>{{ track.name }}</p>
