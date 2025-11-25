@@ -22,7 +22,7 @@ import { Form, Head } from '@inertiajs/vue3';
             v-bind="store.form()"
             :reset-on-success="['password', 'password_confirmation']"
             v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
+            class="flex w-100 flex-col gap-6"
         >
             <div class="grid gap-6">
                 <div class="grid gap-2">
@@ -36,6 +36,7 @@ import { Form, Head } from '@inertiajs/vue3';
                         autocomplete="name"
                         name="name"
                         placeholder="Full name"
+                        class="bg-white text-black"
                     />
                     <InputError :message="errors.name" />
                 </div>
@@ -50,6 +51,7 @@ import { Form, Head } from '@inertiajs/vue3';
                         autocomplete="email"
                         name="email"
                         placeholder="email@example.com"
+                        class="bg-white text-black"
                     />
                     <InputError :message="errors.email" />
                 </div>
@@ -64,6 +66,7 @@ import { Form, Head } from '@inertiajs/vue3';
                         autocomplete="new-password"
                         name="password"
                         placeholder="Password"
+                        class="bg-white text-black"
                     />
                     <InputError :message="errors.password" />
                 </div>
@@ -78,13 +81,14 @@ import { Form, Head } from '@inertiajs/vue3';
                         autocomplete="new-password"
                         name="password_confirmation"
                         placeholder="Confirm password"
+                        class="bg-white text-black"
                     />
                     <InputError :message="errors.password_confirmation" />
                 </div>
 
                 <Button
                     type="submit"
-                    class="mt-2 w-full"
+                    class="mt-2 w-full bg-white text-black hover:bg-gray-200"
                     tabindex="5"
                     :disabled="processing"
                     data-test="register-user-button"
@@ -94,11 +98,11 @@ import { Form, Head } from '@inertiajs/vue3';
                 </Button>
             </div>
 
-            <div class="text-center text-sm text-muted-foreground">
+            <div class="text-center text-sm text-white">
                 Already have an account?
                 <TextLink
                     :href="login()"
-                    class="underline underline-offset-4"
+                    class="text-white underline underline-offset-4"
                     :tabindex="6"
                     >Log in</TextLink
                 >
