@@ -12,7 +12,10 @@ const props = defineProps<{
 const { tracks } = props;
 </script>
 <template>
-    <div v-if="highestVotedTracks && highestVotedTracks.length > 0">
+    <div
+        v-if="highestVotedTracks && highestVotedTracks.length > 0"
+        class="mb-8"
+    >
         <HighlightedTrack
             v-for="highestVotedTrack in highestVotedTracks"
             :key="highestVotedTrack.id"

@@ -2,7 +2,6 @@
 import InputError from '@/components/InputError.vue';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
@@ -37,7 +36,7 @@ defineProps<{
             v-bind="store.form()"
             :reset-on-success="['password']"
             v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
+            class="flex w-50 w-100 flex-col gap-6"
         >
             <div class="grid gap-6">
                 <div class="grid gap-2">
@@ -51,6 +50,7 @@ defineProps<{
                         :tabindex="1"
                         autocomplete="email"
                         placeholder="email@example.com"
+                        class="bg-white text-black"
                     />
                     <InputError :message="errors.email" />
                 </div>
@@ -61,7 +61,7 @@ defineProps<{
                         <TextLink
                             v-if="canResetPassword"
                             :href="request()"
-                            class="text-sm"
+                            class="text-sm text-white"
                             :tabindex="5"
                         >
                             Forgot password?
@@ -75,20 +75,27 @@ defineProps<{
                         :tabindex="2"
                         autocomplete="current-password"
                         placeholder="Password"
+                        class="bg-white text-black"
                     />
                     <InputError :message="errors.password" />
                 </div>
 
                 <div class="flex items-center justify-between">
                     <Label for="remember" class="flex items-center space-x-3">
-                        <Checkbox id="remember" name="remember" :tabindex="3" />
+                        <input
+                            id="remember"
+                            name="remember"
+                            :tabindex="3"
+                            type="checkbox"
+                            class="bg-white accent-blue-600"
+                        />
                         <span>Remember me</span>
                     </Label>
                 </div>
 
                 <Button
                     type="submit"
-                    class="mt-4 w-full"
+                    class="mt-4 w-full bg-white text-black hover:bg-gray-200"
                     :tabindex="4"
                     :disabled="processing"
                     data-test="login-button"
@@ -98,12 +105,11 @@ defineProps<{
                 </Button>
             </div>
 
-            <div
-                class="text-center text-sm text-muted-foreground"
-                v-if="canRegister"
-            >
+            <div class="text-center text-sm" v-if="canRegister">
                 Don't have an account?
-                <TextLink :href="register()" :tabindex="5">Sign up</TextLink>
+                <TextLink :href="register()" :tabindex="5" class="text-white"
+                    >Sign up</TextLink
+                >
             </div>
         </Form>
     </AuthBase>

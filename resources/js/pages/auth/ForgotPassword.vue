@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import AuthLayout from '@/layouts/AuthLayout.vue';
+import AppLayout from '@/layouts/AppLayout.vue';
 import { login } from '@/routes';
 import { email } from '@/routes/password';
 import { Form, Head } from '@inertiajs/vue3';
@@ -16,7 +16,7 @@ defineProps<{
 </script>
 
 <template>
-    <AuthLayout
+    <AppLayout
         title="Forgot password"
         description="Enter your email to receive a password reset link"
     >
@@ -30,7 +30,11 @@ defineProps<{
         </div>
 
         <div class="space-y-6">
-            <Form v-bind="email.form()" v-slot="{ errors, processing }">
+            <Form
+                v-bind="email.form()"
+                v-slot="{ errors, processing }"
+                class="w-100"
+            >
                 <div class="grid gap-2">
                     <Label for="email">Email address</Label>
                     <Input
@@ -40,13 +44,14 @@ defineProps<{
                         autocomplete="off"
                         autofocus
                         placeholder="email@example.com"
+                        class="bg-white text-black"
                     />
                     <InputError :message="errors.email" />
                 </div>
 
                 <div class="my-6 flex items-center justify-start">
                     <Button
-                        class="w-full"
+                        class="w-full bg-white text-black hover:bg-gray-200"
                         :disabled="processing"
                         data-test="email-password-reset-link-button"
                     >
@@ -56,10 +61,10 @@ defineProps<{
                 </div>
             </Form>
 
-            <div class="space-x-1 text-center text-sm text-muted-foreground">
+            <div class="space-x-1 text-center text-sm text-white">
                 <span>Or, return to</span>
-                <TextLink :href="login()">log in</TextLink>
+                <TextLink :href="login()" class="text-white">log in</TextLink>
             </div>
         </div>
-    </AuthLayout>
+    </AppLayout>
 </template>
