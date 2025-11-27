@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Vote;
+use App\Models\Track;
 use Illuminate\Database\Seeder;
 
 class VoteSeeder extends Seeder
@@ -13,15 +14,21 @@ class VoteSeeder extends Seeder
      */
     public function run(): void
     {
-        $tracks = \App\Models\Track::all();
+        // Create a pool of users
+        $users = User::factory()->count(100)->create();
+
+        $tracks = Track::all();
 
         foreach ($tracks as $track) {
-            // Each track gets a random number of votes between 5 and 20
             $voteCount = rand(5, 20);
-            for ($i = 0; $i < $voteCount; $i++) {
+
+            // Assign votes to random users from the pool
+            $userIds = $users->random($voteCount)->pluck('id');
+
+            foreach ($userIds as $userId) {
                 Vote::factory()->create([
                     'track_id' => $track->id,
-                    'user_id' => User::factory()->create()->id,
+                    'user_id' => $userId,
                 ]);
             }
         }
