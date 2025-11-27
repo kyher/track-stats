@@ -8,7 +8,7 @@ use Laravel\Fortify\Features;
 
 class TrackController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $tracks = Track::all();
         $highestVotedTrack = $tracks->sortByDesc(fn($track) => $track->votes->count())->first();

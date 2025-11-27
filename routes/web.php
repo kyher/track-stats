@@ -1,19 +1,13 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TrackController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Models\Track;
 use App\Http\Controllers\VoteController;
 
-Route::get('/', [TrackController::class, 'index'])->name('home');
+Route::get('/', TrackController::class)->name('home');
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard', [
-        'tracks' => Track::all(),
-        'userVote' => auth()->user()->vote ?? null,
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/vote', [VoteController::class, 'store'])
     ->middleware(['auth', 'verified'])
