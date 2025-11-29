@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Vote;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,5 +22,14 @@ class TrackFactory extends Factory
             'created_at' => now(),
             'updated_at' => now(),
         ];
+    }
+
+    public function withVotes(int $count = 5)
+    {
+        return $this->afterCreating(function ($track) use ($count) {
+            Vote::factory()->count($count)->create([
+                'track_id' => $track->id,
+            ]);
+        });
     }
 }
