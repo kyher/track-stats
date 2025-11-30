@@ -1,0 +1,17 @@
+FROM node:20
+
+# Install PHP and common extensions
+RUN apt-get update && \
+    apt-get install -y php-cli php-mbstring php-xml php-curl php-zip php-gd php-mysql && \
+    apt-get clean
+
+WORKDIR /var/www/html
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]
