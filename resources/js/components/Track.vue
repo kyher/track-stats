@@ -1,12 +1,9 @@
 <script setup lang="ts">
+import { TrackType } from '@/types';
 import { defineProps } from 'vue';
-interface Track {
-    id: number;
-    name: string;
-    voteCount: number;
-}
+
 const props = defineProps<{
-    track: Track;
+    track: TrackType;
 }>();
 const { track } = props;
 </script>

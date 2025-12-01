@@ -1,14 +1,11 @@
 <script setup lang="ts">
+import { TrackType } from '@/types';
 import { Form } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
 import Button from './ui/button/Button.vue';
-interface Track {
-    id: number;
-    name: string;
-    voteCount: number;
-}
+
 const props = defineProps<{
-    track: Track;
+    track: TrackType;
     currentUserVote: boolean;
 }>();
 const { track } = props;
