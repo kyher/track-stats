@@ -8,7 +8,7 @@ withDefaults(
     defineProps<{
         canRegister: boolean;
         tracks: TrackType[];
-        highestVotedTracks?: TrackType[];
+        highestVotedTracks: TrackType[];
     }>(),
     {
         canRegister: true,
