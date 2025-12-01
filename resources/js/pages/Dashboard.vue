@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TrackList from '@/components/TrackList.vue';
+import DashboardTrackList from '@/components/DashboardTrackList.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { TrackType, VoteType } from '@/types';
 import { Head } from '@inertiajs/vue3';
@@ -19,6 +19,10 @@ withDefaults(
     <Head title="Home" />
 
     <AppLayout>
-        <TrackList :tracks="tracks" :userVote="userVote" :readOnly="false" />
+        <DashboardTrackList
+            :tracks="tracks"
+            :userVote="userVote"
+            :readOnly="false"
+        />
     </AppLayout>
 </template>
