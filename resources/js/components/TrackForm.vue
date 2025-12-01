@@ -19,8 +19,8 @@ const { track } = props;
             'bg-green-900': currentUserVote,
             'hover:bg-gray-700': !currentUserVote,
         }"
+        :transform="(data) => ({ ...data, track_id: track.id })"
     >
-        <input type="hidden" name="track_id" :value="track.id" />
         <p>{{ track.name }}</p>
         <p v-if="currentUserVote">✅</p>
         <Button
